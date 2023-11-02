@@ -16,6 +16,7 @@ enum CustomError:Error {
 
 enum MealAPI {
     case desserts
+    case breakfast
     case details(Int)
 
     func url() -> URL {
@@ -24,6 +25,8 @@ enum MealAPI {
         switch self {
         case .desserts:
             return URL(string: base + "json/v1/1/filter.php?c=Dessert")!
+        case .breakfast:
+            return URL(string: base + "json/v1/1/filter.php?c=Breakfast")!
         case .details(let mealId):
             return URL(string: base + "json/v1/1/lookup.php?i=\(mealId)")!
         }
